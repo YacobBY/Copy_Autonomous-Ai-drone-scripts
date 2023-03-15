@@ -1,6 +1,6 @@
 import sys, time
 import argparse
-sys.path.insert(1, 'modules')
+sys.path.insert(1, '')
 
 import cv2
 import collections
@@ -18,9 +18,10 @@ parser.add_argument('--mode', type=str, default='flight', help='Switches between
 parser.add_argument('--control', type=str, default='PID', help='Use PID or P controller' )
 args = parser.parse_args()
 
+args.mode = 'test'
 # config
 MAX_FOLLOW_DIST = 2                          #meter
-MAX_ALT =  2.5                                  #m
+MAX_ALT =  2.5                                   #m
 MAX_MA_X_LEN = 5
 MAX_MA_Z_LEN = 5
 MA_X = collections.deque(maxlen=MAX_MA_X_LEN)   #Moving Average X
