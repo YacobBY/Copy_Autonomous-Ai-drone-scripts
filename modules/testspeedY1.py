@@ -28,6 +28,9 @@ MA_X = collections.deque(maxlen=MAX_MA_X_LEN)   #Moving Average X
 MA_Z = collections.deque(maxlen=MAX_MA_Z_LEN)   #Moving Average Z
 STATE = "takeoff"                               # takeoff land track search
 # end config
+print("connecting to drone")
+
+control.connect_drone('127.0.0.1:14551')
 
 def setup():
     print("connecting lidar")
@@ -36,14 +39,12 @@ def setup():
     print("setting up detector")
     detector.initialize_detector()
 
-    print("connecting to drone")
     if args.mode == "flight":
         print("MODE = flight")
         control.connect_drone('/dev/ttyACM0')
     else:
         print("MODE = test")
-        control.connect_drone('127.0.0.1:14551')
-    
+
     control.set_flight_altitude(MAX_ALT) #new never tested!
 
 setup()
